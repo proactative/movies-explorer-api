@@ -3,6 +3,7 @@ const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 
 const { requestLogger, errorLogger } = require('./middlewares/logger');
+const allRoutes = require('./routes/index');
 
 const app = express();
 
@@ -15,6 +16,7 @@ mongoose.connect(PATH_MONGO, {
 app.use(bodyParser.json());
 app.use(requestLogger);
 
+app.use('/', allRoutes);
 app.use(errorLogger);
 
 app.listen(PORT, () => {
