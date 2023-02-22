@@ -1,6 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
+const { requestLogger, errorLogger } = require('./middlewares/logger');
 
 const app = express();
 
@@ -11,6 +12,9 @@ mongoose.connect(PATH_MONGO, {
 });
 
 app.use(bodyParser.json());
+app.use(requestLogger);
+
+app.use(errorLogger);
 
 app.listen(PORT, () => {
   console.log(`App is listening on port ${PORT} ...`);
