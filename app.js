@@ -1,6 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
+const helmet = require('helmet');
 
 const { requestLogger, errorLogger } = require('./middlewares/logger');
 const allRoutes = require('./routes/index');
@@ -13,6 +14,7 @@ mongoose.connect(PATH_MONGO, {
   useNewUrlParser: true,
 });
 
+app.use(helmet());
 app.use(bodyParser.json());
 app.use(requestLogger);
 
