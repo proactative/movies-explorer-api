@@ -16,6 +16,7 @@ const NOT_FOUND_MOVIE_MESSAGE = 'Запрашиваемый фильм не на
 const NOT_UNIQUE_USER_MESSAGE = 'Пользователь с такой почтой уже зарегистрирован.';
 const INTERNAL_SERVER_ERROR_MESSAGE = 'На сервере произошла ошибка.';
 const SUCCESS_DELETE_MOVIE_MESSAGE = 'Фильм успешно удален.';
+const NON_EXISTENT_PAGE = 'Запрашиваемая страница отсутствует.';
 
 module.exports = {
   URL_REGEX,
@@ -34,4 +35,5 @@ module.exports = {
   UNAUTHORIZED_USER_MESSAGE,
   FORBIDDEN_MESSAGE,
   SUCCESS_DELETE_MOVIE_MESSAGE,
+  NON_EXISTENT_PAGE,
 };

@@ -3,6 +3,7 @@ const router = require('express').Router();
 const routerUsers = require('./users');
 const routerMovies = require('./movies');
 const { signin, signup } = require('../controllers/users');
+const { nonExistentPath } = require('../controllers/nonExistentPath');
 
 router.post('/signin', signin);
 router.post('/signup', signup);
