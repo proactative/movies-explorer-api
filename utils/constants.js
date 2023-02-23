@@ -17,6 +17,7 @@ const NOT_UNIQUE_USER_MESSAGE = 'Пользователь с такой почт
 const INTERNAL_SERVER_ERROR_MESSAGE = 'На сервере произошла ошибка.';
 const SUCCESS_DELETE_MOVIE_MESSAGE = 'Фильм успешно удален.';
 const NON_EXISTENT_PAGE = 'Запрашиваемая страница отсутствует.';
+const REQUIRE_AUTHORIZATION_MESSAGE = 'Необходима авторизация';
 
 module.exports = {
   URL_REGEX,
@@ -36,4 +37,5 @@ module.exports = {
   FORBIDDEN_MESSAGE,
   SUCCESS_DELETE_MOVIE_MESSAGE,
   NON_EXISTENT_PAGE,
+  REQUIRE_AUTHORIZATION_MESSAGE,
 };
