@@ -1,4 +1,4 @@
-const URL_REGEX = /^https?:\/\/([\w\-]+\.)+[a-z]{2,}(\/[\w#\-\.~:\[\]@!\$&'\(\)\*\+,;=,]*)*$/i; // eslint-disable-line
+const URL_REGEX = /^https?:\/\/([\w\-]+\.)+[a-z]{2,}(\/[\w#\-\.~:\[\]@!\$&'\(\)\*\+,;=,]*)*$/i;
 
 const BAD_REQUEST_CODE = 400;
 const UNAUTHORIZED_CODE = 401;
