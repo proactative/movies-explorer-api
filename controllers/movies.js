@@ -5,7 +5,7 @@ const ForbiddenError = require('../errors/forbidden-error');
 const {
   NOT_FOUND_MOVIE_MESSAGE,
   BAD_REQUEST_MOVIE_MESSAGE,
-  SUCCESS_DELETE_MOVIE_MESSAGE,
+  SUCCESS_DELETED_MOVIE_MESSAGE,
   FORBIDDEN_MESSAGE,
 } = require('../utils/constants');
 
@@ -69,7 +69,7 @@ const deleteMovieById = (req, res, next) => {
       return movie.delete();
     })
     .then(() => {
-      res.send({ message: SUCCESS_DELETE_MOVIE_MESSAGE });
+      res.send({ message: SUCCESS_DELETED_MOVIE_MESSAGE });
     })
     .catch((err) => {
       if (err.name === 'CastError') {
