@@ -5,7 +5,7 @@ Backend part for the application which helps find movies according to the reques
 
 ### Link to the project [https://api.movies.proactative.nomoredomains.work](https://api.movies.proactative.nomoredomains.work)
 ### Link to the github repo [https://github.com/proactative/movies-explorer-api](https://github.com/proactative/movies-explorer-api)
-IP 
+IP 62.84.112.85
 
 ### __Start the project__
 
