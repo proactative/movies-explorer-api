@@ -11,6 +11,6 @@ router.post('/signin', validateSignin, signin);
 router.post('/signup', validateSignup, signup);
 router.use('/users', auth, routerUsers);
 router.use('/movies', auth, routerMovies);
-router.use('/*', notFoundPage);
+router.use('/*', auth, notFoundPage);
 
 module.exports = router;
