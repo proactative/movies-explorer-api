@@ -9,43 +9,14 @@ const {
   FORBIDDEN_MESSAGE,
 } = require('../utils/constants');
 
-const getAllMovies = (req, res, next) => {
-  Movie.find({})
-    .populate('owner')
+const getUserMovies = (req, res, next) => {
+  Movie.find({ owner: req.userId })
     .then((data) => res.send(data))
     .catch(next);
 };
 
 const addMovie = (req, res, next) => {
-  const {
-    country,
-    director,
-    duration,
-    year,
-    description,
-    image,
-    trailerLink,
-    thumbnail,
-    nameRu,
-    nameEn,
-  } = req.body;
-  const { owner, movieId } = req.user;
-
-  Movie.create({
-    country,
-    director,
-    duration,
-    year,
-    description,
-    image,
-    trailerLink,
-    thumbnail,
-    owner,
-    movieId,
-    nameRu,
-    nameEn,
-  })
-    .then((movie) => movie.populate('owner'))
+  Movie.create({ ...req.body, owner: req.userId })
     .then((movie) => res.send(movie))
     .catch((err) => {
       if (err.name === 'ValidationError') {
@@ -57,13 +28,10 @@ const addMovie = (req, res, next) => {
 };
 
 const deleteMovieById = (req, res, next) => {
-  const { movieId } = req.params;
-  const userId = req.user._id;
-
-  Movie.findById(movieId)
+  Movie.findById(req.params.id)
     .orFail(new NotFoundError(NOT_FOUND_MOVIE_MESSAGE))
     .then((movie) => {
-      if (String(movie.owner) !== userId) {
+      if (String(movie.owner) !== req.userId) {
         throw new ForbiddenError(FORBIDDEN_MESSAGE);
       }
       return movie.delete();
@@ -81,7 +49,7 @@ const deleteMovieById = (req, res, next) => {
 };
 
 module.exports = {
-  getAllMovies,
+  getUserMovies,
   addMovie,
   deleteMovieById,
 };
