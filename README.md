@@ -14,8 +14,8 @@ IP 62.84.112.85
 
 
 ### __Details__
-Middleware __auth__ protects all routes except `/signin` and `/signup`. <br/>
 Middleware __apiLimiter__ limits the amount of requests to 100 within 15 minutes. <br/>
+Middleware __auth__ protects all routes except `/signin` and `/signup`. <br/>
 Middleware __error__ is used for processing errors.<br/>
 Middleware __logger__ keeps logging errors in `error.log` and requests in `request.log` at the server.<br/>
 Password is kept as a hash and API doesn`t return it to the user.<br/>
@@ -37,14 +37,13 @@ User can delete only his/her saved movie.
 | POST |`/signup` | registration|
 | GET |`/users/me`|  get information about the user|
 | PATCH |`/users/me`| update information about the user|
-| GET |`/movies` | get all movies |
+| GET |`/movies` | get user`s movies |
 | POST |`/movies`  | add a movie |
 | DELETE |`/movies/:id` | delete the movie by id |
 
 ### __Libraries__
 
 - Express
-- MongoDB
 - Mongoose
 - Jsonwebtoken
 - Bcryptjs
