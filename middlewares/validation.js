@@ -39,7 +39,7 @@ const validateAddMovie = celebrate(
       image: Joi.string().required().pattern(URL_REGEX),
       trailerLink: Joi.string().required().pattern(URL_REGEX),
       thumbnail: Joi.string().required().pattern(URL_REGEX),
-      movieId: Joi.number().required().hex().length(24),
+      movieId: Joi.string().required().hex().length(24),
       nameRU: Joi.string().required(),
       nameEN: Joi.string().required(),
     }),

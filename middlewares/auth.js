@@ -15,7 +15,7 @@ const auth = (req, res, next) => {
   } catch (error) {
     return next(new UnauthorizedError(REQUIRE_AUTHORIZATION_MESSAGE));
   }
-  req.user = payload;
+  req.userId = payload._id;
   return next();
 };
 

@@ -50,24 +50,25 @@ const signin = (req, res, next) => {
       if (!user) {
         throw new UnauthorisedError(UNAUTHORIZED_USER_MESSAGE);
       }
-      return { matched: bcrypt.compare(password, user.password), user };
-    })
-    .then(({ matched, user }) => {
-      if (!matched) {
-        throw new UnauthorisedError(UNAUTHORIZED_USER_MESSAGE);
-      }
-      const token = jwt.sign(
-        { _id: user._id },
-        JWT_SECRET,
-        { expiresIn: '7d' },
-      );
-      return res.send({ token });
+      bcrypt.compare(password, user.password)
+        .then((matched) => {
+          if (!matched) {
+            throw new UnauthorisedError(UNAUTHORIZED_USER_MESSAGE);
+          }
+          const token = jwt.sign(
+            { _id: user._id },
+            JWT_SECRET,
+            { expiresIn: '7d' },
+          );
+          return res.send({ token });
+        })
+        .catch(next);
     })
     .catch(next);
 };
 
 const updateUserInfo = (req, res, next) => {
-  User.findByIdAndUpdate(req.user._id, req.body, {
+  User.findByIdAndUpdate(req.userId, req.body, {
     new: true,
     runValidators: true,
   })
@@ -75,7 +76,7 @@ const updateUserInfo = (req, res, next) => {
       if (user) {
         return res.send(user);
       }
-      throw new NotFoundError();
+      throw new NotFoundError(NOT_FOUND_USER_MESSAGE);
     })
     .catch((err) => {
       if (err.name === 'CastError') {
@@ -86,7 +87,7 @@ const updateUserInfo = (req, res, next) => {
 };
 
 const getUserInfo = (req, res, next) => {
-  User.findById(req.params.userId)
+  User.findById(req.userId)
     .then((user) => {
       if (user) {
         return res.send(user);
