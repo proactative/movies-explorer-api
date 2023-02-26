@@ -10,6 +10,7 @@ const { PORT, PATH_MONGO } = require('./utils/config');
 const allRoutes = require('./routes/index');
 const errorMiddleware = require('./middlewares/error');
 const { apiLimiter } = require('./middlewares/api-limiter');
+const { cors } = require('./middlewares/cors');
 
 const app = express();
 
@@ -18,6 +19,7 @@ mongoose.connect(PATH_MONGO, {
   useNewUrlParser: true,
 });
 
+app.use(cors);
 app.use(helmet());
 app.use(bodyParser.json());
 app.use(requestLogger);
