@@ -82,6 +82,9 @@ const updateUserInfo = (req, res, next) => {
       if (err.name === 'CastError') {
         next(new ValidationError(BAD_REQUEST_USER_MESSAGE));
       }
+      if (err.code === 11000) {
+        next(new ConflictError(NOT_UNIQUE_USER_MESSAGE));
+      }
       return next(err);
     });
 };

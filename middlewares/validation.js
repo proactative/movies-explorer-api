@@ -47,9 +47,18 @@ const validateAddMovie = celebrate(
   },
 );
 
+const validateId = celebrate(
+  {
+    params: Joi.object().keys({
+      id: Joi.string().required().hex().length(24),
+    }),
+  },
+);
+
 module.exports = {
   validateSignup,
   validateSignin,
   validateUpdateUser,
   validateAddMovie,
+  validateId,
 };
