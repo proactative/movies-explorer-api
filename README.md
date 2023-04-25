@@ -1,11 +1,13 @@
-# movies-explorer-api
+# Project "Movies explorer"
+
+![shield](https://img.shields.io/badge/status-release-brightgreen)
+![shield](https://img.shields.io/badge/version-1.0.0-blue)
 
 ### __About the project__
-Backend part for the application which helps find movies according to the request and save them as chosen ones. 
+Backend part for the application which helps find movies according to the request and save them as chosen ones. </br>
+The project was done as a diploma work within Yandex Practicum course "Web-developer".
 
 ### Link to the project [https://api.movies.proactative.nomoredomains.work](https://api.movies.proactative.nomoredomains.work)
-### Link to the github repo [https://github.com/proactative/movies-explorer-api](https://github.com/proactative/movies-explorer-api)
-IP 62.84.112.85
 
 ### __Start the project__
 
